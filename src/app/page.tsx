@@ -11,6 +11,11 @@ import BarbershopItem from "./_components/barbershop-item"
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({})
+  const popularBarbershops = await db.barbershop.findMany({
+    orderBy: {
+      name: "desc",
+    },
+  })
 
   return (
     <div>
@@ -19,17 +24,69 @@ export default async function Home() {
         <h2 className="text-xl font-bold">Olá, Davyd!</h2>
         <p>Segunda-feira, 05 de agosto.</p>
 
-        <div className="mt-24 flex items-center gap-2">
+        <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faça sua busca..." />
           <Button>
             <SearchIcon />
           </Button>
         </div>
 
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Image
+              alt="Buscar por cabelo"
+              src="/cabelo.svg"
+              width={16}
+              height={16}
+            />
+            Cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              alt="Buscar por barba"
+              src="/barba.svg"
+              width={16}
+              height={16}
+            />
+            Barba
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              alt="Buscar por acabamento"
+              src="/acabamento.svg"
+              width={16}
+              height={16}
+            />
+            Acabamento
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              alt="Buscar por cabelo"
+              src="/cabelo.svg"
+              width={16}
+              height={16}
+            />
+            Pézinho
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              alt="Buscar por barba"
+              src="/barba.svg"
+              width={16}
+              height={16}
+            />
+            Sombrancelha
+          </Button>
+        </div>
+
         <div className="relative mt-6 h-[150px] w-full">
           <Image
             alt="banner Agenda nos melhores"
-            src="/banner-01.png"
+            src="/banner-pizza-01.jpg"
             fill
             className="rounded-xl object-cover"
           />
@@ -65,7 +122,29 @@ export default async function Home() {
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
+
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Recomendados
+        </h2>
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((popularBarbershop) => (
+            <BarbershopItem
+              key={popularBarbershop.id}
+              barbershop={popularBarbershop}
+            />
+          ))}
+        </div>
       </div>
+
+      <footer>
+        <Card>
+          <CardContent className="px-5 py-6">
+            <p className="text-sm text-gray-400">
+              &copy; Copyright <strong>FWS Barber</strong>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   )
 }
