@@ -3,6 +3,9 @@ import { Button } from "./_components/ui/button"
 import Header from "./_components/header"
 import { Input } from "./_components/ui/input"
 import { SearchIcon } from "lucide-react"
+import { Card, CardContent } from "./_components/ui/card"
+import { Badge } from "./_components/ui/badge"
+import { Avatar, AvatarImage } from "./_components/ui/avatar"
 
 export default function Home() {
   return (
@@ -27,6 +30,25 @@ export default function Home() {
             className="rounded-xl object-cover"
           />
         </div>
+        <Card className="mt-6">
+          <CardContent className="flex justify-between p-0">
+            <div className="flex flex-col gap-2 py-5 pl-5">
+              <Badge className="w-fit">Confirmado</Badge>
+              <h3 className="font-semibold">Corte de Cabelo</h3>
+              <div className="flex items-center gap-2">
+                <Avatar className="h-6 w-6">
+                  <AvatarImage src="https://avatars.githubusercontent.com/u/115958290?v=4" />
+                </Avatar>
+                <p className="text-sm">Barbearia do Davy</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center border-l-2 px-5">
+              <p className="text-sm">Agosto</p>
+              <p className="text-2xl">05</p>
+              <p className="text-sm">21:00</p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )
