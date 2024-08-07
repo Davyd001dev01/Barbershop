@@ -3,7 +3,6 @@ import { Button } from "./_components/ui/button"
 import Header from "./_components/header"
 import { Input } from "./_components/ui/input"
 import { SearchIcon } from "lucide-react"
-import { Card, CardContent } from "./_components/ui/card"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/quick-search"
@@ -75,7 +74,7 @@ export default async function Home() {
         </div>
 
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Recomendados
+          Populares
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
           {popularBarbershops.map((popularBarbershop) => (
@@ -86,16 +85,6 @@ export default async function Home() {
           ))}
         </div>
       </div>
-
-      <footer>
-        <Card>
-          <CardContent className="px-5 py-6">
-            <p className="text-sm text-gray-400">
-              &copy;2024 Copyright <strong>FWS Barber</strong>
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   )
 }
