@@ -1,12 +1,11 @@
 import Image from "next/image"
 import { Button } from "./_components/ui/button"
 import Header from "./_components/header"
-import { Input } from "./_components/ui/input"
-import { SearchIcon } from "lucide-react"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/quick-search"
 import BookingItem from "./_components/booking-item"
+import Search from "./_components/search"
 
 export default async function Home() {
   const barbershops = await db.barbershop.findMany({})
@@ -23,11 +22,9 @@ export default async function Home() {
         <h2 className="text-xl font-bold">Olá, Davyd!</h2>
         <p>Segunda-feira, 05 de agosto.</p>
 
-        <div className="mt-6 flex items-center gap-2">
-          <Input placeholder="Faça sua busca..." />
-          <Button>
-            <SearchIcon />
-          </Button>
+        {/* Buscar */}
+        <div className="mt-6">
+          <Search />
         </div>
 
         {/* Geração das quicks searchs */}
