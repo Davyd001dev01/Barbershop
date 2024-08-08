@@ -1,11 +1,19 @@
 import { Button } from "./ui/button"
-import { CalendarIcon, HomeIcon, LogOutIcon } from "lucide-react"
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import { quickSearchOptions } from "../_constants/quick-search"
-import { Avatar } from "./ui/avatar"
-import { AvatarImage } from "@radix-ui/react-avatar"
+// import { Avatar } from "./ui/avatar"
+// import { AvatarImage } from "@radix-ui/react-avatar"
 import Link from "next/link"
 import Image from "next/image"
+import {
+  Dialog,
+  DialogHeader,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog"
 
 export default function SidebarSheet() {
   return (
@@ -16,15 +24,40 @@ export default function SidebarSheet() {
         </SheetHeader>
 
         {/* Avatar e informações do usuario */}
-        <div className="flex items-center gap-3 border-b border-solid py-5">
-          <Avatar>
+        <div className="flex items-center justify-between gap-3 border-b border-solid py-5">
+          <h2 className="text-lg font-bold">Olá, faça seu login</h2>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="icon">
+                <LogInIcon />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="w-[90%] rounded-xl">
+              <DialogHeader>
+                <DialogTitle>Faça seu Login na plataforma</DialogTitle>
+                <DialogDescription>
+                  Conecte-se usando sua conta do Google.
+                </DialogDescription>
+              </DialogHeader>
+              <Button variant="outline" className="gap-1 font-bold">
+                <Image
+                  alt="login com Google"
+                  src="/google.svg"
+                  width={18}
+                  height={18}
+                />
+                Google
+              </Button>
+            </DialogContent>
+          </Dialog>
+          {/* <Avatar>
             <AvatarImage src="https://avatars.githubusercontent.com/u/115958290?v=4" />
           </Avatar>
 
           <div>
             <p className="font-bold">Davyd Viana</p>
             <p className="text-xs text-gray-500">davyd7dev01@gmail.com</p>
-          </div>
+          </div> */}
         </div>
 
         {/* Botões (Inicio e Agendamentos) */}
