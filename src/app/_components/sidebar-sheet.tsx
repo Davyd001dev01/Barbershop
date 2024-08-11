@@ -8,19 +8,12 @@ import { Avatar } from "./ui/avatar"
 import { AvatarImage } from "@radix-ui/react-avatar"
 import Link from "next/link"
 import Image from "next/image"
-import {
-  Dialog,
-  DialogHeader,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
+import { signOut, useSession } from "next-auth/react"
+import SignInDialog from "./sign-in-dialog"
 
 export default function SidebarSheet() {
   const { data } = useSession()
-  const handleLoginWithGoogleClick = () => signIn("google")
   const handleLogoutClick = () => signOut()
 
   return (
@@ -53,25 +46,7 @@ export default function SidebarSheet() {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="w-[90%] rounded-xl">
-                  <DialogHeader>
-                    <DialogTitle>Faça seu Login na plataforma</DialogTitle>
-                    <DialogDescription>
-                      Conecte-se usando sua conta do Google.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <Button
-                    variant="outline"
-                    className="gap-1 font-bold"
-                    onClick={handleLoginWithGoogleClick}
-                  >
-                    <Image
-                      alt="login com Google"
-                      src="/google.svg"
-                      width={18}
-                      height={18}
-                    />
-                    Google
-                  </Button>
+                  <SignInDialog />
                 </DialogContent>
               </Dialog>
             </>
