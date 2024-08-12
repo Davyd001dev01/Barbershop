@@ -28,6 +28,7 @@ interface ServiceItemProps {
   service: BarbershopService
   barbershop: Pick<Barbershop, "name">
 }
+1
 
 const TIME_LIST = [
   "08:00",
