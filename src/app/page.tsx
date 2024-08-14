@@ -100,14 +100,22 @@ export default async function Home() {
 
         {/* Mostra os meus agendamentos */}
 
-        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
-          Agendamentos
-        </h2>
-        <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {confirmedBookings.map((confirmedBooking) => (
-            <BookingItem key={confirmedBooking.id} booking={confirmedBooking} />
-          ))}
-        </div>
+        {confirmedBookings && (
+          <>
+            <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+              Agendamentos
+            </h2>
+
+            <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+              {confirmedBookings.map((confirmedBooking) => (
+                <BookingItem
+                  key={confirmedBooking.id}
+                  booking={confirmedBooking}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
